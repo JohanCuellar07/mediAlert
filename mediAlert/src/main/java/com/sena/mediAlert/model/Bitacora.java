@@ -19,11 +19,11 @@ public class Bitacora {
 
     @ManyToOne
     @JoinColumn(name = "pacienteid", nullable = false)
-    private Paciente pacienteid;
+    private Paciente paciente;
 
     @ManyToOne
     @JoinColumn(name = "medicamentoid", nullable = false)
-    private Medicamento medicamentoid;
+    private Medicamento medicamento;
 
     @Column(name = "fechaenvio", nullable = false)
     private Date fechaenvio;
@@ -31,10 +31,10 @@ public class Bitacora {
     public Bitacora() {
     }
 
-    public Bitacora(int id, Paciente pacienteid, Medicamento medicamentoid, Date fechaenvio) {
+    public Bitacora(int id, Paciente paciente, Medicamento medicamento, Date fechaenvio) {
         this.id = id;
-        this.pacienteid = pacienteid;
-        this.medicamentoid = medicamentoid;
+        this.paciente = paciente;
+        this.medicamento = medicamento;
         this.fechaenvio = fechaenvio;
     }
 
@@ -47,19 +47,19 @@ public class Bitacora {
     }
 
     public Paciente getPacienteid() {
-        return pacienteid;
+        return paciente;
     }
 
-    public void setPacienteid(Paciente pacienteid) {
-        this.pacienteid = pacienteid;
+    public void setPacienteid(Paciente paciente) {
+        this.paciente = paciente;
     }
 
     public Medicamento getMedicamentoid() {
-        return medicamentoid;
+        return medicamento;
     }
 
-    public void setMedicamentoid(Medicamento medicamentoid) {
-        this.medicamentoid = medicamentoid;
+    public void setMedicamentoid(Medicamento medicamento) {
+        this.medicamento = medicamento;
     }
 
     public Date getFechaenvio() {

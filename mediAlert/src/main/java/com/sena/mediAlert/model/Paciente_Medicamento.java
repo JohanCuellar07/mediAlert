@@ -17,18 +17,19 @@ public class Paciente_Medicamento {
 
     @ManyToOne
     @JoinColumn(name = "pacienteid", nullable = false)
-    private Paciente pacienteid;
+    private Paciente paciente;
 
     @ManyToOne
     @JoinColumn(name = "medicamentoid", nullable = false)
-    private Medicamento medicamentoid;
+    private Medicamento medicamento;
 
     public Paciente_Medicamento() {
     }
 
-    public Paciente_Medicamento(int id, Paciente pacienteid, Medicamento medicamentoid) {
-        this.pacienteid = pacienteid;
-        this.medicamentoid = medicamentoid;
+    public Paciente_Medicamento(int id, Paciente paciente, Medicamento medicamento) {
+        this.id = id;
+        this.paciente = paciente;
+        this.medicamento = medicamento;
     }
 
     public int getId() {
@@ -40,18 +41,18 @@ public class Paciente_Medicamento {
     }
 
     public Paciente getPacienteid() {
-        return pacienteid;
+        return paciente;
     }
 
-    public void setPacienteid(Paciente pacienteid) {
-        this.pacienteid = pacienteid;
+    public void setPacienteid(Paciente paciente) {
+        this.paciente = paciente;
     }
 
     public Medicamento getMedicamentoid() {
-        return medicamentoid;
+        return medicamento;
     }
 
-    public void setMedicamentoid(Medicamento medicamentoid) {
-        this.medicamentoid = medicamentoid;
+    public void setMedicamentoid(Medicamento medicamento) {
+        this.medicamento = medicamento;
     }
 }
