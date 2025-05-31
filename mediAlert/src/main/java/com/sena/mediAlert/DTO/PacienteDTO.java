@@ -1,15 +1,18 @@
 package com.sena.mediAlert.DTO;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class PacienteDTO {
     private String nombre;
 
-    private Date fecha_nacimiento;
+    private LocalDate fecha_nacimiento;
 
     private String correo;
 
-    public PacienteDTO(String nombre, Date fecha_nacimiento, String correo) {
+    public PacienteDTO() {
+    }
+
+    public PacienteDTO(String nombre, LocalDate fecha_nacimiento, String correo) {
         this.nombre = nombre;
         this.fecha_nacimiento = fecha_nacimiento;
         this.correo = correo;
@@ -23,11 +26,11 @@ public class PacienteDTO {
         this.nombre = nombre;
     }
 
-    public Date getFecha_nacimiento() {
+    public LocalDate getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 

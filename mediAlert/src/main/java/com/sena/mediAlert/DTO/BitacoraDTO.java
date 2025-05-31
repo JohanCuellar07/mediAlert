@@ -1,6 +1,6 @@
 package com.sena.mediAlert.DTO;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import com.sena.mediAlert.model.Medicamento;
 import com.sena.mediAlert.model.Paciente;
@@ -10,9 +10,9 @@ public class BitacoraDTO {
 
     private Medicamento medicamento;
 
-    private Date fechaenvio;
+    private LocalDateTime fechaenvio;
 
-    public BitacoraDTO(Paciente paciente, Medicamento medicamento, Date fechaenvio) {
+    public BitacoraDTO(Paciente paciente, Medicamento medicamento, LocalDateTime fechaenvio) {
         this.paciente = paciente;
         this.medicamento = medicamento;
         this.fechaenvio = fechaenvio;
@@ -34,11 +34,11 @@ public class BitacoraDTO {
         this.medicamento = medicamento;
     }
 
-    public Date getFechaenvio() {
+    public LocalDateTime getFechaenvio() {
         return fechaenvio;
     }
 
-    public void setFechaenvio(Date fechaenvio) {
+    public void setFechaenvio(LocalDateTime fechaenvio) {
         this.fechaenvio = fechaenvio;
     }
 }

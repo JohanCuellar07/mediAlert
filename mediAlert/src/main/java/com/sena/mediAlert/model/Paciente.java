@@ -1,6 +1,6 @@
 package com.sena.mediAlert.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,7 +19,7 @@ public class Paciente {
     private String nombre;
 
     @Column(name = "fecha_nacimiento")
-    private Date fecha_nacimiento;
+    private LocalDate fecha_nacimiento;
 
     @Column(name = "correo", length = 255, nullable = false)
     private String correo;
@@ -27,7 +27,7 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(int id, String nombre, Date fecha_nacimiento, String correo) {
+    public Paciente(int id, String nombre, LocalDate fecha_nacimiento, String correo) {
         this.id = id;
         this.nombre = nombre;
         this.fecha_nacimiento = fecha_nacimiento;
@@ -50,11 +50,11 @@ public class Paciente {
         this.nombre = nombre;
     }
 
-    public Date getFecha_nacimiento() {
+    public LocalDate getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 

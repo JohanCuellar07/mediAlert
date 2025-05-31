@@ -1,6 +1,6 @@
 package com.sena.mediAlert.DTO;
 
-import java.sql.Time;
+import java.time.LocalTime;
 
 import com.sena.mediAlert.model.Medicamento;
 import com.sena.mediAlert.model.Paciente;
@@ -12,9 +12,9 @@ public class Paciente_MedicamentoDTO {
 
     private String dosis;
 
-    private Time horario;
+    private LocalTime horario;
 
-    public Paciente_MedicamentoDTO(Paciente paciente, Medicamento medicamento, String dosis, Time horario) {
+    public Paciente_MedicamentoDTO(Paciente paciente, Medicamento medicamento, String dosis, LocalTime horario) {
         this.paciente = paciente;
         this.medicamento = medicamento;
         this.dosis = dosis;
@@ -45,11 +45,11 @@ public class Paciente_MedicamentoDTO {
         this.dosis = dosis;
     }
 
-    public Time getHorario() {
+    public LocalTime getHorario() {
         return horario;
     }
 
-    public void setHorario(Time horario) {
+    public void setHorario(LocalTime horario) {
         this.horario = horario;
     }
 }

@@ -1,6 +1,6 @@
 package com.sena.mediAlert.model;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,12 +26,12 @@ public class Bitacora {
     private Medicamento medicamento;
 
     @Column(name = "fechaenvio", nullable = false)
-    private Date fechaenvio;
+    private LocalDateTime fechaenvio;
 
     public Bitacora() {
     }
 
-    public Bitacora(int id, Paciente paciente, Medicamento medicamento, Date fechaenvio) {
+    public Bitacora(int id, Paciente paciente, Medicamento medicamento, LocalDateTime fechaenvio) {
         this.id = id;
         this.paciente = paciente;
         this.medicamento = medicamento;
@@ -62,11 +62,11 @@ public class Bitacora {
         this.medicamento = medicamento;
     }
 
-    public Date getFechaenvio() {
+    public LocalDateTime getFechaenvio() {
         return fechaenvio;
     }
 
-    public void setFechaenvio(Date fechaenvio) {
+    public void setFechaenvio(LocalDateTime fechaenvio) {
         this.fechaenvio = fechaenvio;
     }
 }

@@ -1,6 +1,6 @@
 package com.sena.mediAlert.model;
 
-import java.sql.Time;
+import java.time.LocalTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,12 +29,12 @@ public class Paciente_Medicamento {
     private String dosis;
 
     @Column(name = "horario", nullable = false)
-    private Time horario;
+    private LocalTime horario;
 
     public Paciente_Medicamento() {
     }
 
-    public Paciente_Medicamento(int id, Paciente paciente, Medicamento medicamento, String dosis, Time horario) {
+    public Paciente_Medicamento(int id, Paciente paciente, Medicamento medicamento, String dosis, LocalTime horario) {
         this.id = id;
         this.paciente = paciente;
         this.medicamento = medicamento;
@@ -74,11 +74,11 @@ public class Paciente_Medicamento {
         this.dosis = dosis;
     }
 
-    public Time getHorario() {
+    public LocalTime getHorario() {
         return horario;
     }
 
-    public void setHorario(Time horario) {
+    public void setHorario(LocalTime horario) {
         this.horario = horario;
     }
 }

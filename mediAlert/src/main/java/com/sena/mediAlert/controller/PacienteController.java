@@ -23,7 +23,7 @@ public class PacienteController {
     private PacienteService pacienteService;
 
     @PostMapping("/")
-    public ResponseEntity<Object> registerPaciente(PacienteDTO paciente){
+    public ResponseEntity<Object> registerPaciente(@RequestBody PacienteDTO paciente){
         responseDTO respuesta = pacienteService.save(paciente);
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }

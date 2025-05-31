@@ -1,5 +1,6 @@
 package com.sena.mediAlert.repository;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,6 +18,9 @@ public interface IPaciente_Medicamento extends JpaRepository<Paciente_Medicament
 
     @Query("SELECT pm FROM paciente_medicamento pm WHERE pm.medicamento.id = :medicamentoId")
     List<Paciente_Medicamento> findAllByMedicamentoId(@Param("medicamentoId") int medicamentoId);
+
+    @Query("SELECT pm FROM paciente_medicamento pm WHERE pm.horario = :horario")
+    List<Paciente_Medicamento> findByHorario(@Param("horario") LocalTime horario);
 
     @Transactional
     @Modifying
