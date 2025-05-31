@@ -1,5 +1,7 @@
 package com.sena.mediAlert.model;
 
+import java.sql.Time;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,13 +25,21 @@ public class Paciente_Medicamento {
     @JoinColumn(name = "medicamentoid", nullable = false)
     private Medicamento medicamento;
 
+    @Column(name = "dosis", length = 100, nullable = false)
+    private String dosis;
+
+    @Column(name = "horario", nullable = false)
+    private Time horario;
+
     public Paciente_Medicamento() {
     }
 
-    public Paciente_Medicamento(int id, Paciente paciente, Medicamento medicamento) {
+    public Paciente_Medicamento(int id, Paciente paciente, Medicamento medicamento, String dosis, Time horario) {
         this.id = id;
         this.paciente = paciente;
         this.medicamento = medicamento;
+        this.dosis = dosis;
+        this.horario = horario;
     }
 
     public int getId() {
@@ -54,5 +64,21 @@ public class Paciente_Medicamento {
 
     public void setMedicamentoid(Medicamento medicamento) {
         this.medicamento = medicamento;
+    }
+
+    public String getDosis() {
+        return dosis;
+    }
+
+    public void setDosis(String dosis) {
+        this.dosis = dosis;
+    }
+
+    public Time getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Time horario) {
+        this.horario = horario;
     }
 }

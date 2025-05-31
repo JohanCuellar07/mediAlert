@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-@Entity(name = "Bitacora")
+@Entity(name = "bitacora")
 public class Bitacora {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

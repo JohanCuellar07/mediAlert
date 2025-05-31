@@ -15,7 +15,7 @@ public class Paciente {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "nombre", length = 250, nullable = false)
+    @Column(name = "nombre", length = 200, nullable = false)
     private String nombre;
 
     @Column(name = "fecha_nacimiento")
@@ -27,7 +27,8 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(String nombre, Date fecha_nacimiento, String correo) {
+    public Paciente(int id, String nombre, Date fecha_nacimiento, String correo) {
+        this.id = id;
         this.nombre = nombre;
         this.fecha_nacimiento = fecha_nacimiento;
         this.correo = correo;
