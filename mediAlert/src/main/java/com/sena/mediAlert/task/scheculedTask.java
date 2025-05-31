@@ -14,7 +14,7 @@ import com.sena.mediAlert.service.emailService;
 @Component
 public class scheculedTask {
     @Autowired
-    private emailService email;
+    private emailService emailService;
     @Autowired
     private  IPaciente_Medicamento paciente_Medicamento;
 
@@ -30,9 +30,22 @@ public class scheculedTask {
         List<Paciente_Medicamento> lista = paciente_Medicamento.findByHorario(ahora);
 
         for (Paciente_Medicamento pm : lista) {
-            System.out.println("El paciente " + pm.getPacienteid().getNombre() +
-                " debe tomar " + pm.getMedicamentoid().getNombre() +
-                " (" + pm.getDosis() + ") ahora.");
+            String nombre = pm.getPacienteid().getNombre();
+            String correo = pm.getPacienteid().getCorreo();
+            String nombreMedicamento = pm.getMedicamentoid().getNombre();
+
+            String asunto = "Recordatorio de Medicamento";
+            String cuerpo = "Hola " + nombre + ", recuerda tomar tu medicamento: "
+                          + nombreMedicamento + " (" + pm.getDosis() + ") ahora.";
+
+            try {
+                emailService.enviarRecordatorio(correo, asunto, cuerpo);
+                System.out.println("Recordatorio de Medicamento" +
+                "Hola " + nombre + ", recuerda tomar tu medicamento: " +
+                nombreMedicamento + " (" + pm.getDosis() + ") ahora.");
+            } catch (Exception e) {
+                System.out.println("No se pudo enviar correo a " + correo + ": " + e.getMessage());
+            }
         }
     }
 }

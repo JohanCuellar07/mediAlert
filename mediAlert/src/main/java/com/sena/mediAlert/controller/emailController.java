@@ -12,9 +12,9 @@ public class emailController {
     @Autowired
     private emailService emailService;
 
-    @GetMapping("/email")
-    public String sendEmail(@PathVariable String email) {
-        emailService.sendEmail(email);
-        return "Mail sent successfully";
-    }
+    //@GetMapping("/email")
+    //public String sendEmail(@PathVariable String email) {
+    //    emailService.sendEmail(email);
+    //    return "Mail sent successfully";
+    //}
 }
