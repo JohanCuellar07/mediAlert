@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediAlert</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body onload="inicializarPagina()">
+    <nav class="navbar">
+        <div class="logo" onclick="location.href = './index.html'">MediAlert</div>
+        <ul class="nav-links">
+            <li><a href="./pacientes.html">Gestión de Pacientes</a></li>
+            <li><a href="./medicamentos.html">Gestión de Medicamentos</a></li>
+            <li><a href="./pacientes_medicamentos.html">Gestión de Medicación de Pacientes</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h1>Recordatorios de Medicamentos</h1>
+
+        <form class="form">
+            <label for="paciente">Selecciona un paciente:</label>
+            <select id="paciente" name="paciente" onchange="cargarRecordatorios()">
+                <option value="">Todos los pacientes</option>
+                <!--<option value="juan">Juan Pérez</option>
+                <option value="ana">Ana Gómez</option>
+                <option value="carlos">Carlos Ruiz</option>
+                 Puedes añadir más pacientes aquí -->
+            </select>
+        </form>
+
+        <section class="patient-list" id="recordatorios-lista">
+            <h2>Medicamentos Pendientes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Medicamento</th>
+                        <th>Dosis</th>
+                        <th>Hora</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Juan</td>
+                        <td>Paracetamol</td>
+                        <td>500 mg</td>
+                        <td>8:00</td>
+                        <td>Enviado</td>
+                        <td><button>Tomar</button>
+                        <button>Suspender</button></td>
+                    </tr>
+                    <tr>
+                        <td>Ana</td>
+                        <td>Ibuprofeno</td>
+                        <td>400 mg</td>
+                        <td>2:00</td>
+                        <td>Enviado</td>
+                        <td><button>Tomar</button>
+                        <button>Suspender</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="./assets/js/recordatorio.js"></script>
+</body>
+</html>

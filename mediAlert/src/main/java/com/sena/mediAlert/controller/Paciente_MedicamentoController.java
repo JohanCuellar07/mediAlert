@@ -40,6 +40,12 @@ public class Paciente_MedicamentoController {
         return new ResponseEntity<>(listaPacienteMedicamento, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> findById(@PathVariable int id){
+        var listaPacienteMedicamento = pacienteMedicamentoService.findById(id);
+        return new ResponseEntity<>(listaPacienteMedicamento, HttpStatus.OK);
+    }
+
     @GetMapping("/paciente/{pacienteId}")
     public ResponseEntity<Object> getByPacienteId(@PathVariable int pacienteId){
         var listaPorPaciente = pacienteMedicamentoService.findAllByPacienteId(pacienteId);
@@ -51,7 +57,7 @@ public class Paciente_MedicamentoController {
         var listaPorMedicamento = pacienteMedicamentoService.findAllByMedicamentoId(medicamentoId);
         return new ResponseEntity<>(listaPorMedicamento, HttpStatus.OK);
     }
-
+    
     @DeleteMapping("/paciente/{pacienteId}")
     public ResponseEntity<Object> deleteByPacienteId(@PathVariable int pacienteId){
         responseDTO respuesta = pacienteMedicamentoService.deleteByPacienteId(pacienteId);

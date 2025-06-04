@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Medicamentos</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body onload="cargarMedicamentos()">
+    <nav class="navbar">
+        <div class="logo" onclick="location.href = './index.html'">MediAlert</div>
+        <ul class="nav-links">
+            <li><a href="./pacientes.html">Gestión de Pacientes</a></li>
+            <li><a href="./medicamentos.html">Gestión de Medicamentos</a></li>
+            <li><a href="./pacientes_medicamentos.html">Gestión de Medicación de Pacientes</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h1>Gestión de Medicamentos</h1>
+        <form class="form">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <button type="button" onclick="registrarMedicamento()">Guardar Paciente</button>
+        </form>
+    </main>
+    <section class="patient-list" id="medicamentos-lista">
+        <h2>Medicamentos Registrados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody><!--
+                <tr>
+                    <td>Paracetamol</td>
+                </tr>
+                <tr>
+                    <td>Ibuprofeno</td>
+                </tr>
+                 Puedes agregar más registros aquí -->
+            </tbody>
+        </table>
+    </section>
+    <script src="./assets/js/medicamento.js"></script>
+</body>
+</html>

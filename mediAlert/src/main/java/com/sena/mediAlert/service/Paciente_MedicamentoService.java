@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.sena.mediAlert.DTO.Paciente_MedicamentoDTO;
 import com.sena.mediAlert.DTO.responseDTO;
+import com.sena.mediAlert.model.EstadoRecordatorio;
 import com.sena.mediAlert.model.Paciente_Medicamento;
 import com.sena.mediAlert.repository.IPaciente_Medicamento;
 
@@ -82,7 +83,7 @@ public class Paciente_MedicamentoService {
             );
             return respuesta;
         }
-        if (Paciente_MedicamentoDTO.getHorario() == null) {
+        if (Paciente_MedicamentoDTO.getHora() == null) {
             responseDTO respuesta = new responseDTO(
                 HttpStatus.BAD_REQUEST.toString(),
                 "La hora del medicamento no puede estar vacia"
@@ -90,6 +91,7 @@ public class Paciente_MedicamentoService {
             return respuesta;
         }
         Paciente_Medicamento pacienteMedicamentoRegister = convertToModel(Paciente_MedicamentoDTO);
+        pacienteMedicamentoRegister.setEstado(EstadoRecordatorio.SINENVIAR);
         data.save(pacienteMedicamentoRegister);
         responseDTO respuesta = new responseDTO(
             HttpStatus.OK.toString(),
@@ -113,10 +115,17 @@ public class Paciente_MedicamentoService {
             );
             return respuesta;
         }
-        if (DTO.getHorario() == null) {
+        if (DTO.getHora() == null) {
             responseDTO respuesta = new responseDTO(
                 HttpStatus.BAD_REQUEST.toString(),
                 "La hora del medicamento no puede estar vacia"
+            );
+            return respuesta;
+        }
+        if (DTO.getEstado() == null) {
+            responseDTO respuesta = new responseDTO(
+                HttpStatus.BAD_REQUEST.toString(),
+                "El estado del medicamento no puede estar vacia"
             );
             return respuesta;
         }
@@ -124,7 +133,7 @@ public class Paciente_MedicamentoService {
         existingPaciente_Medicamento.setPacienteid(DTO.getPacienteid());
         existingPaciente_Medicamento.setMedicamentoid(DTO.getMedicamentoid());
         existingPaciente_Medicamento.setDosis(DTO.getDosis());
-        existingPaciente_Medicamento.setHorario(DTO.getHorario());
+        existingPaciente_Medicamento.setHora(DTO.getHora());
         data.save(existingPaciente_Medicamento);
         responseDTO respuesta = new responseDTO(
             HttpStatus.OK.toString(),
@@ -138,7 +147,8 @@ public class Paciente_MedicamentoService {
             pacienteMedicamento.getPacienteid(),
             pacienteMedicamento.getMedicamentoid(),
             pacienteMedicamento.getDosis(),
-            pacienteMedicamento.getHorario()
+            pacienteMedicamento.getHora(),
+            pacienteMedicamento.getEstado()
         );
         return pacienteMedicamentoDTO;
     }
@@ -149,7 +159,8 @@ public class Paciente_MedicamentoService {
             pacienteMedicamentoDTO.getPacienteid(),
             pacienteMedicamentoDTO.getMedicamentoid(),
             pacienteMedicamentoDTO.getDosis(),
-            pacienteMedicamentoDTO.getHorario()
+            pacienteMedicamentoDTO.getHora(),
+            pacienteMedicamentoDTO.getEstado()
         );
         return pacienteMedicamento;
     }

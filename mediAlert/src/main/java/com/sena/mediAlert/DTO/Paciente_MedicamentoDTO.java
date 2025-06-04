@@ -2,6 +2,7 @@ package com.sena.mediAlert.DTO;
 
 import java.time.LocalTime;
 
+import com.sena.mediAlert.model.EstadoRecordatorio;
 import com.sena.mediAlert.model.Medicamento;
 import com.sena.mediAlert.model.Paciente;
 
@@ -12,13 +13,16 @@ public class Paciente_MedicamentoDTO {
 
     private String dosis;
 
-    private LocalTime horario;
+    private LocalTime hora;
 
-    public Paciente_MedicamentoDTO(Paciente paciente, Medicamento medicamento, String dosis, LocalTime horario) {
+    private EstadoRecordatorio estado;
+
+    public Paciente_MedicamentoDTO(Paciente paciente, Medicamento medicamento, String dosis, LocalTime hora, EstadoRecordatorio estado) {
         this.paciente = paciente;
         this.medicamento = medicamento;
         this.dosis = dosis;
-        this.horario = horario;
+        this.hora = hora;
+        this.estado = EstadoRecordatorio.SINENVIAR;
     }
 
     public Paciente getPacienteid() {
@@ -45,11 +49,19 @@ public class Paciente_MedicamentoDTO {
         this.dosis = dosis;
     }
 
-    public LocalTime getHorario() {
-        return horario;
+    public LocalTime getHora() {
+        return hora;
     }
 
-    public void setHorario(LocalTime horario) {
-        this.horario = horario;
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
+    }
+
+    public EstadoRecordatorio getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoRecordatorio estado) {
+        this.estado = estado;
     }
 }

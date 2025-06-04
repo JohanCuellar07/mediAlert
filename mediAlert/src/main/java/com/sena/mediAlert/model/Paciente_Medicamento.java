@@ -4,6 +4,8 @@ import java.time.LocalTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,18 +30,23 @@ public class Paciente_Medicamento {
     @Column(name = "dosis", length = 100, nullable = false)
     private String dosis;
 
-    @Column(name = "horario", nullable = false)
-    private LocalTime horario;
+    @Column(name = "hora", nullable = false)
+    private LocalTime hora;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado", nullable = false)
+    private EstadoRecordatorio estado;
 
     public Paciente_Medicamento() {
     }
 
-    public Paciente_Medicamento(int id, Paciente paciente, Medicamento medicamento, String dosis, LocalTime horario) {
+    public Paciente_Medicamento(int id, Paciente paciente, Medicamento medicamento, String dosis, LocalTime hora, EstadoRecordatorio estado) {
         this.id = id;
         this.paciente = paciente;
         this.medicamento = medicamento;
         this.dosis = dosis;
-        this.horario = horario;
+        this.hora = hora;
+        this.estado = EstadoRecordatorio.SINENVIAR;
     }
 
     public int getId() {
@@ -74,11 +81,19 @@ public class Paciente_Medicamento {
         this.dosis = dosis;
     }
 
-    public LocalTime getHorario() {
-        return horario;
+    public LocalTime getHora() {
+        return hora;
     }
 
-    public void setHorario(LocalTime horario) {
-        this.horario = horario;
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
+    }
+
+    public EstadoRecordatorio getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoRecordatorio estado) {
+        this.estado = estado;
     }
 }
