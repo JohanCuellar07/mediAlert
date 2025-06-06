@@ -22,7 +22,7 @@ public class Paciente_MedicamentoDTO {
         this.medicamento = medicamento;
         this.dosis = dosis;
         this.hora = hora;
-        this.estado = EstadoRecordatorio.SINENVIAR;
+        this.estado = estado;
     }
 
     public Paciente getPacienteid() {

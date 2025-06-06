@@ -42,7 +42,7 @@ function cargarRecordatorios() {
                     <td>${paciente_medicamento.dosis}</td>
                     <td>${paciente_medicamento.hora}</td>
                     <td>${paciente_medicamento.estado}</td>
-                    <td><button onclick="tomar(${paciente_medicamento.id})">Tomar</button>
+                    <td><button onclick='tomar(${JSON.stringify(paciente_medicamento)})'>Tomar</button>
                     <button onclick='suspender(${JSON.stringify(paciente_medicamento)})'>Suspender</button></td>
                 </tr>
             `;
@@ -92,9 +92,17 @@ function tomar(paciente_medicamento) {
 
         let bodyContent = JSON.stringify({
             "estado": "RECIBIDO",
+            "pacienteid": {
+                "id": paciente_medicamento.pacienteid.id
+            },
+            "medicamentoid": {
+                "id": paciente_medicamento.medicamentoid.id
+            },
+            "dosis": paciente_medicamento.dosis,
+            "hora": paciente_medicamento.hora
         });
 
-        let response = await fetch(`http://127.0.0.1:8080/paciente_medicamento/${id}`, {
+        let response = await fetch(`http://127.0.0.1:8080/paciente_medicamento/${paciente_medicamento.id}`, {
             method: "PUT",
             body: bodyContent,
             headers: headersList
@@ -127,7 +135,7 @@ function suspender(paciente_medicamento) {
             "hora": paciente_medicamento.hora
         });
 
-        let response = await fetch(`http://127.0.0.1:8080/paciente_medicamento/${id}`, {
+        let response = await fetch(`http://127.0.0.1:8080/paciente_medicamento/${paciente_medicamento.id}`, {
             method: "PUT",
             body: bodyContent,
             headers: headersList

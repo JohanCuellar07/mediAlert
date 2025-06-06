@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+body {
+    padding-bottom: 2rem; /* Espacio debajo de todo el contenido */
+}
+
 /* Navbar */
 .navbar{
     background-color: #3a3f58;

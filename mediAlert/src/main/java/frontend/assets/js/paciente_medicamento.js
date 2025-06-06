@@ -24,8 +24,8 @@ function registrarPacienteMedicamento() {
 
         let bodyContent = JSON.stringify({
             "id": 0,
-            "paciente": paciente,
-            "medicamento": medicamento,
+            "paciente": { "id": parseInt(paciente) },
+            "medicamento": { "id": parseInt(medicamento) },
             "dosis": dosis,
             "hora": hora
         });
@@ -79,4 +79,61 @@ function cargarPacientesMedicamentos() {
             tabla.appendChild(fila);
         });
     });
+}
+
+function cargarPacientes() {
+    return new Promise (async (resolve) => {
+        const selectPaciente  = document.getElementById("paciente")
+        let headersList = {
+            "Accept": "*/*",
+            "User-Agent": "web",
+            "Content-Type": "application/json"
+        }
+
+        let response = await fetch("http://127.0.0.1:8080/paciente/", {
+            method: "GET",
+            headers: headersList
+        });
+
+        let data = await response.json();
+        selectPaciente .innerHTML = "<option value=''>Selecciona un paciente</option>";
+        data.forEach(paciente => {
+            const option = document.createElement("option");
+            option.value = paciente.id;
+            option.innerHTML = paciente.nombre;
+            selectPaciente.appendChild(option);
+            console.log(paciente);
+        });
+    });
+}
+
+function cargarMedicamentos() {
+    return new Promise (async (resolve) => {
+        const selectMedicamento  = document.getElementById("medicamento")
+        let headersList = {
+            "Accept": "*/*",
+            "User-Agent": "web",
+            "Content-Type": "application/json"
+        }
+
+        let response = await fetch("http://127.0.0.1:8080/medicamento/", {
+            method: "GET",
+            headers: headersList
+        });
+
+        let data = await response.json();
+        selectMedicamento .innerHTML = "<option value=''>Selecciona un medicamento</option>";
+        data.forEach(medicamento => {
+            const option = document.createElement("option");
+            option.value = medicamento.id;
+            option.innerHTML = medicamento.nombre;
+            selectMedicamento.appendChild(option);
+        });
+    });
+}
+
+function inicializarPagina() {
+    cargarPacientes();
+    cargarMedicamentos();
+    cargarPacientesMedicamentos();
 }

@@ -46,7 +46,7 @@ public class Paciente_Medicamento {
         this.medicamento = medicamento;
         this.dosis = dosis;
         this.hora = hora;
-        this.estado = EstadoRecordatorio.SINENVIAR;
+        this.estado = estado;
     }
 
     public int getId() {

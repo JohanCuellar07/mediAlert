@@ -90,6 +90,9 @@ public class Paciente_MedicamentoService {
             );
             return respuesta;
         }
+        if (Paciente_MedicamentoDTO.getEstado() == null) {
+            Paciente_MedicamentoDTO.setEstado(EstadoRecordatorio.SINENVIAR);
+        }
         Paciente_Medicamento pacienteMedicamentoRegister = convertToModel(Paciente_MedicamentoDTO);
         pacienteMedicamentoRegister.setEstado(EstadoRecordatorio.SINENVIAR);
         data.save(pacienteMedicamentoRegister);
@@ -134,10 +137,11 @@ public class Paciente_MedicamentoService {
         existingPaciente_Medicamento.setMedicamentoid(DTO.getMedicamentoid());
         existingPaciente_Medicamento.setDosis(DTO.getDosis());
         existingPaciente_Medicamento.setHora(DTO.getHora());
+        existingPaciente_Medicamento.setEstado(DTO.getEstado());
         data.save(existingPaciente_Medicamento);
         responseDTO respuesta = new responseDTO(
             HttpStatus.OK.toString(),
-            "El medicamento ha sido actualizado"
+            "La medicación ha sido actualizada"
         );
         return respuesta;  
     }

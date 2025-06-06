@@ -14,6 +14,10 @@ import com.sena.mediAlert.model.Paciente_Medicamento;
 import jakarta.transaction.Transactional;
 
 public interface IPaciente_Medicamento extends JpaRepository<Paciente_Medicamento, Integer> {
+
+    @Query("SELECT pm FROM paciente_medicamento pm")
+    List<Paciente_Medicamento> findALL();
+
     @Query("SELECT pm FROM paciente_medicamento pm WHERE pm.id = :id")
     List<Paciente_Medicamento> getPacienteMedicamentoByid(int id);
 

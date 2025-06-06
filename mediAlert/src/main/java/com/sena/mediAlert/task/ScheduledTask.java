@@ -124,11 +124,13 @@ public class ScheduledTask {
 
     @Scheduled(cron = "0 0 0 * * *")
     public void reiniciarEstado() {
-        List<Paciente_Medicamento> enviados = paciente_Medicamento.findByEstado(EstadoRecordatorio.ENVIADO);
+        List<Paciente_Medicamento> lista = paciente_Medicamento.findAll();
 
-        for (Paciente_Medicamento pm : enviados) {
-            pm.setEstado(EstadoRecordatorio.SINENVIAR);
-            paciente_Medicamento.save(pm);
+        for (Paciente_Medicamento pm : lista) {
+            if (pm.getEstado() != EstadoRecordatorio.SUSPENDIDO) {
+                pm.setEstado(EstadoRecordatorio.SINENVIAR);
+                paciente_Medicamento.save(pm);
+            }
         }
         System.out.println("Todos los registros de medicamentos enviados han sido reiniciados");
     }
